@@ -1,0 +1,9 @@
+﻿@model List<WebNN.Models.Item>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@foreach (var m in Model)
+{
+  <p>@m.ItemId | @m.Name</p>
+}

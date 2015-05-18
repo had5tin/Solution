@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*@Html.Partial("_Product")
+    @Html.Partial("_Feature")*@
+
+@*@Ajax.ActionLink(
+            "Click Here to Load the Product Partial View",
+        "Product",
+        "GetDetail",
+        null,
+            new AjaxOptions { UpdateTargetId = "toProduct" }
+    )
+
+    <div id="toProduct"></div>
+
+    @Ajax.ActionLink(
+            "Click Here to Load the Feature Partial View",
+        "Feature",
+        "GetDetail",
+        null,
+            new AjaxOptions { UpdateTargetId = "toFeature" }
+    )
+
+    <div id="toFeature"></div>*@
+
+<div>
+    <h1>First Partial View</h1>
+    <div id="dvProduct">
+
+    </div>
+    <h1>Second Partial View</h1>
+    <div id="dvFeature">
+
+    </div>
+
+    @Ajax.ActionLink(
+        "Click Here to Load the Product Partial View",
+        "Product",
+        "GetDetail",
+        null,
+        new AjaxOptions { UpdateTargetId = "toProduct", HttpMethod = "Get", InsertionMode = InsertionMode.Replace })
+
+    <div id="toProduct"></div>
+
+    @Ajax.BeginForm("Product", "GetDetail", null)
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '/GetDetail/Product',
+            contentType: 'application/html; charset=utf-8',
+            type: 'Get',
+            dataType: 'html'
+        })
+            .success(function (result) {
+                $('#dvProduct').html(result);
+            })
+            .error(function (xhr, status) {
+                console.log(status);
+            });
+        $.ajax({
+            url: '/GetDetail/Feature',
+            contentType: 'application/html; charset=utf-8',
+            type: 'Get',
+            dataType: 'html'
+        })
+            .success(function (result) {
+                $('#dvFeature').html(result);
+            })
+            .error(function (xhr, status) {
+                console.log(status);
+            });
+    });
+</script>

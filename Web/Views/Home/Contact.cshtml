@@ -1,0 +1,43 @@
+﻿@model List<System.Web.UI.WebControls.ListItem>
+@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm("Contact", "Home", FormMethod.Get))
+{
+    <input id="Submit1" type="submit" value="SayHello" />
+}
+<div class="row">
+    <div class="form-group">
+        <div class="col-sm-6 col-sm-offset-6">
+            @Html.DropDownList("Value", new SelectList(Model, "Value", "Text"), "Chọn điểm", new { @class = "selectpicker" })
+        </div>
+    </div>
+</div>
+@if (ViewBag.List != null)
+{
+    var slist = (List<string>)ViewBag.List;
+
+    <div>
+        <h3>List (@slist.Count)</h3>
+        <div>
+            @foreach (var s in slist)
+            {
+                <p>@Html.Raw(s)</p>
+            }
+        </div>
+    </div>
+}
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>

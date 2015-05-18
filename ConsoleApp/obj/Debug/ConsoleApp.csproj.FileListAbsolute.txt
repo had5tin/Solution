@@ -1,0 +1,5 @@
+E:\Projects\Solution\ConsoleApp\bin\Debug\ConsoleApp.exe.config
+E:\Projects\Solution\ConsoleApp\bin\Debug\ConsoleApp.exe
+E:\Projects\Solution\ConsoleApp\bin\Debug\ConsoleApp.pdb
+E:\Projects\Solution\ConsoleApp\obj\Debug\ConsoleApp.exe
+E:\Projects\Solution\ConsoleApp\obj\Debug\ConsoleApp.pdb

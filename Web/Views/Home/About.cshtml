@@ -1,0 +1,69 @@
+﻿@using System.Web.UI.WebControls
+@model Web.Models.ClassString
+@{
+    ViewBag.Title = "About";
+    var list = new List<ListItem>
+    {
+        new ListItem {Value = "10", Text = "10 điểm"},
+        new ListItem {Value = "20", Text = "20 điểm"},
+        new ListItem {Value = "30", Text = "30 điểm"},
+    };
+    //var select = (string[])ViewBag.Select;
+
+    var select = new List<string>();
+    select.Add("10");
+    select.Add("30");
+
+    if (ViewBag.Select != null)
+    {
+        select = (List<string>)ViewBag.Select;
+        //select.Clear();
+        //foreach (var s in k)
+        //{
+        //    select.Add(s);
+        //}
+    }
+}
+
+
+<p>Use this area to provide additional information.</p>
+<link href="~/Content/bootstrap-select.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-select.min.js"></script>
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="form-group">
+            @Html.DropDownList("Value", new MultiSelectList(list, "Value", "Text", select), "Chọn điểm", new { @class = "selectpicker hidden", multiple = "" })
+            <div class="col-sm-6 col-sm-offset-6">
+                @Html.DropDownList("Value1", new MultiSelectList(list, "Value", "Text", select), "Chọn điểm", new { @class = "selectpicker", multiple = "" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6 col-sm-offset-6">
+                <button type="submit" class="btn btn-default">Bắt Đầu</button>
+            </div>
+        </div>
+    </div>
+}
+<div>
+    <div class="col-sm-6 col-sm-offset-6">
+        @Html.DropDownList("Value2", new MultiSelectList(list, "Value", "Text", select), "Chọn điểm", new { @class = "selectpicker", multiple = "" })
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        //$('.selectpicker').selectpicker();
+
+        var dropdownList = $("#Value1");
+        dropdownList.change(function () {
+            loadData();
+        });
+        function loadData() {
+            var id = dropdownList.val();
+            console.log(id);
+            $("#Value").val(id);
+            console.log($("#Value").val());
+        }
+    });
+</script>
